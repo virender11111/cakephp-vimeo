@@ -9,15 +9,15 @@ Vimeo implementation  with cakephp
 
 4.set the CLIENT_ID,CLIENT_SECRET,ACCESS_TOKEN,REDIRECT_URI and SCOPES in Appcontroller (beforeFilter function) like below
 
-            App::import('Vendor', 'Vimeo', array('file' => 'Vimeo/src/Vimeo/Vimeo.php'));
+App::import('Vendor', 'Vimeo', array('file' => 'Vimeo/src/Vimeo/Vimeo.php'));
           
-            define('CLIENT_ID', 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
-            define('CLIENT_SECRET', 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
+define('CLIENT_ID', 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
+define('CLIENT_SECRET', 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
             
-            define('ACCESS_TOKEN', 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
+define('ACCESS_TOKEN', 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
             
-            define('REDIRECT_URI', 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
-            define('SCOPES', 'public private');
+define('REDIRECT_URI', 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
+define('SCOPES', 'public private');
 
 5. if scopes are multiple then you can set these with space seperate.
 
@@ -35,17 +35,14 @@ $lib = new \Vimeo\Vimeo(CLIENT_ID, CLIENT_SECRET);
 
 =========================Upload video on Vimeo and Title and description =====================
 
-        $video_url = 'url of video which you want to upload';
+$video_url = 'url of video which you want to upload';
 
-    	$lib = new \Vimeo\Vimeo(CLIENT_ID, CLIENT_SECRET);
+$lib = new \Vimeo\Vimeo(CLIENT_ID, CLIENT_SECRET);
     
-    	$lib->setToken(ACCESS_TOKEN);
-    	$response = $lib->upload($video_url, false);
-    	if(isset($response) && !empty($response)){
-    	$lib->request($response, array('name' => 'Test', 'description' => 'Test description'), 'PATCH');
-    	}
+$lib->setToken(ACCESS_TOKEN);
+$response = $lib->upload($video_url, false);
+if(isset($response) && !empty($response)){
+$lib->request($response, array('name' => 'Test', 'description' => 'Test description'), 'PATCH');
+}
 
 #Find more information on vimeo officail website (https://developer.vimeo.com/api/start)
-
-Thanks
-Virender
